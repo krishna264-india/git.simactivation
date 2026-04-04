@@ -1,0 +1,79 @@
+spring:
+  application:
+    name: simactivation
+
+  redis:
+    host: localhost
+    port: 6379
+
+  cache:
+    type: redis
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{correlationId}]"
+
+server:
+  port: 8080
+
+# =========================
+# DATABASE CONFIG
+# =========================
+  datasource:
+    url: jdbc:mysql://localhost:3306/telecom_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# =========================
+# KAFKA CONFIG
+# =========================
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    consumer:
+      group-id: telecom-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+# =========================
+# RESILIENCE4J CONFIG
+# =========================
+resilience4j:
+  circuitbreaker:
+    instances:
+      rechargeService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+# =========================
+# CACHE CONFIG (OPTIONAL TUNING)
+# =========================
+
+  cache:
+    redis:
+      time-to-live: 600000  # 10 minutes
+
+# =========================
+# ACTUATOR (MONITORING)
+# =========================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
