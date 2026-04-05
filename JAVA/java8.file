@@ -1,0 +1,75 @@
+Java 8 Streams Overview - Outline
+
+Introduction to Streams
+
+Fluent API for functional processing of element sequences
+Key Stream Components
+
+Source: Collections, Arrays, I/O channels
+Intermediate Operations: Lazy, return new streams
+Terminal Operations: Eager, produce results or side effects
+Creating Streams
+
+From Collection: collection.stream()
+From Arrays: Arrays.stream(array)
+From Values: Stream.of(...)
+Infinite Streams: Stream.iterate(), Stream.generate()
+
+Intermediate Operations (Lazy)
+
+filter(Predicate): Filters elements
+map(Function): Transforms elements
+flatMap(Function): Flattens nested structures
+distinct(): Removes duplicates
+sorted(): Sorts elements
+peek(Consumer): For debugging
+limit(long): Limits stream size
+skip(long): Skips elements
+Example: Filtering and transforming names starting with "J"
+
+Terminal Operations (Eager)
+
+forEach(Consumer): Iterate elements
+collect(Collector): Transform to collection or summarize
+reduce(BinaryOperator): Aggregate elements
+count(): Count elements
+anyMatch(), allMatch(), noneMatch(): Matching predicates
+findFirst(), findAny(): Find elements
+Example: Collecting filtered names into a list
+Collectors Utility
+
+toList(), toSet(), toMap()
+groupingBy(): Group elements by classifier function
+partitioningBy(): Split elements by predicate
+joining(): Concatenate strings
+summingInt(), averagingDouble(): Summary statistics
+Example: Grouping names by first letter
+Primitive Streams
+
+IntStream, LongStream, DoubleStream for primitives
+Specialized operations like sum(), average()
+Example: Summing numbers in a range
+Optional with Streams
+
+findFirst(), max(), min() return Optional
+Example: Finding and printing the first long name
+Parallel Streams
+
+Enable parallel data processing for performance gains
+Created via parallelStream() or .parallel()
+Use with caution for thread safety
+Example: Parallel filtering and printing of names starting with "J"
+Summary of Java 8 / Streams Concepts
+
+Lambda Expressions: Simplify anonymous classes
+Functional Interfaces: Target types for lambdas
+Method References: Cleaner lambdas
+Default & Static Methods: Interface enhancements
+Optional: Null-safe handling
+Date/Time API: Modern date/time handling
+Streams: Functional sequence processing
+Collectors: Aggregating results
+Parallel Streams: Parallel data processing for performance
+This outline captures the key aspects and typical use cases of Java 8 Streams,
+ providing a structured overview suitable for a Java SpringBoot developer with 3-5 
+ years of experience.
