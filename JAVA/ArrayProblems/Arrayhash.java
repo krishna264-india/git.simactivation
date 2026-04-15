@@ -23,7 +23,7 @@ public class Arrayhash {
         }
         return -1;
     }
-    public int subarraySum(int[] nums, int k) {
+    public static int subarraySum(int[] nums, int k) {
         Map<Integer,Integer> map=new HashMap<>();
 // initialize the map with sum 0 and count 1 to handle the case when a subarray itself equals k
         map.put(0,1);
@@ -57,5 +57,16 @@ public class Arrayhash {
             }
         }
         return longest;
+    }
+    static String kthDistinct(String[] arr,int k){
+        Map<String,Integer> map=new HashMap<>();
+        for(String s:arr){
+            map.put(s,map.getOrDefault(s,0)+1);
+        }
+        for(String s:arr){
+            if(map.get(s)==1) k--;
+            if(k==0) return s;
+        }
+        return "";
     }
 }

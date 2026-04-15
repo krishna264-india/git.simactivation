@@ -2,9 +2,13 @@ package ArrayProblems;
 
 public class Kadannes {
     public static void main(String[] args) {
+        int[] nums={-2,1,-3,4,-1,2,1,-5,4};
+        System.out.println(maxSubArray(nums));
+        System.out.println(maxCircularSubArray(nums));
+        System.out.println(maxProductSubArray(nums));
         
     }
-    //Maximum subarray
+    //Maximum subarray sum - leetcode: 53
     static int maxSubArray(int[] nums){
         int maxSum = nums[0];
         int currentSum = nums[0];
@@ -15,7 +19,7 @@ public class Kadannes {
         return maxSum;
     }
 
-    //Maximum circular subarray
+    //Maximum circular subarray sum - leetcode: 918
     static int maxCircularSubArray(int[] nums){
         int maxSum=nums[0], curMax=0;
         int minSum=nums[0], curMin=0;
@@ -33,7 +37,7 @@ public class Kadannes {
         if(maxSum<0) return maxSum;
         return Math.max(maxSum, totalSum - minSum);
     }
-    //Maximum product subarray
+    //Maximum product subarray - leetcode: 152
     static int maxProductSubArray(int[] nums){
         int maxProduct=nums[0];
         // we need to keep track of the minimum product as well because a negative number can turn a minimum product into a maximum product

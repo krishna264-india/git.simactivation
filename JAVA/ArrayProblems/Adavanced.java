@@ -2,9 +2,19 @@ package ArrayProblems;
 
 public class Adavanced {
     public static void main(String[] args) {
+        int[] height={0,1,0,2,1,0,1,3,2,1,2,1};
+        System.out.println(trap(height));
+        int[] prices={7,1,5,3,6,4};
+        System.out.println(maxProfit(prices));
+        int[] gas={1,2,3,4,5};
+        int[] cost={3,4,5,1,2};
+        System.out.println(canCompleteCircuit(gas,cost));
+        int[] nums={1,2,3};
+        nextPermutation(nums);
+        System.out.println(Arrays.toString(nums));//0/p: [1,3,2]
         
     }
-    //trapping rain water
+    //trapping rain water - leetcode: 42
     static int trap(int[] height){
         int left=0, right=height.length-1;
         int leftMax=0, rightMax=0;
@@ -15,7 +25,7 @@ public class Adavanced {
                     leftMax=height[left];
                 }
                 else{
-                    // if the current height is less than the left max, then we can trap water
+    // if the current height is less than the left max, then we can trap water
                     totalWater+=leftMax-height[left];
                 }
                 left++;
@@ -64,7 +74,7 @@ public class Adavanced {
         }
         if(i>=0){
             int j=nums.length-1;
-            while(nums[j]<=nums[i]){
+            while(nums[j]<=nums[i]){// find the rightmost successor to the pivot
                 j--;
             }
             // Swap the elements at index i and j

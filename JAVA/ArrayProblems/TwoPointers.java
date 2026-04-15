@@ -1,6 +1,8 @@
 package ArrayProblems;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TwoPointers {
@@ -207,38 +209,7 @@ public class TwoPointers {
             end--;
         }
     }
-    /*
-     * You are given an array of integers nums and an integer target.
-      Return the number of non-empty subsequences of nums such that the sum of the minimum 
-      and maximum element on it is less or equal to target. Since the answer may be too 
-      large, return it modulo 109 + 7.
-     */
-    public int numSubseq(int[] nums, int target) {
-        Arrays.sort(nums);
-        int left = 0, right = nums.length-1;
-        // Precompute powers of 2
-        int mod = 1000000007;
-        int count = 0;
-        int[] pow = new int[nums.length];// pow[i] = 2^i % mod
-        pow[0] = 1;
-        // Fill the pow array
-        for (int i = 1; i < pow.length; i++) {
-            // Calculate 2^i % mod
-            pow[i] = (pow[i - 1] * 2) % mod;// 2^i % mod
-        }
-        while (left <= right) {
-            if (nums[left] + nums[right] <= target) {
-                // All subsequences between left and right are valid
-                count = (count + pow[right - left]) % mod;
-                left++;
-            } else {
-                right--;
-            }
-        }
-        return count;
-    }
     public int numRescueBoats(int[] people, int limit) {
-        
         Arrays.sort(people);
         int left=0, right=people.length-1;
         int boats=0;
@@ -254,6 +225,7 @@ public class TwoPointers {
         }
         return boats;
     }
+    // LEETCODE 633
     public boolean judgeSquareSum(int c) {
         int left = 0, right = (int) Math.sqrt(c);
         while (left <= right) {
@@ -268,4 +240,32 @@ public class TwoPointers {
         }
         return false;
     }
-}
+    // LEETCODE 1848
+   static int getMinDistance(int[] nums, int target, int start) {
+        // int minDistance=Integer.MAX_VALUE;
+        // for(int i=0;i<nums.length;i++){
+        //     if(nums[i]==target){
+        //         minDistance=Math.min(minDistance,Math.abs(i-start));
+        //     }
+        // }
+        // return minDistance;
+      int left=0,right=nums.length-1;
+         int min=Integer.MAX_VALUE;
+        while (left<=right) {
+            if(nums[left]==target){
+                 min=Math.min(min,Math.abs(left-start));
+            }
+            if(left!=right && nums[right]==target){
+                min=Math.min(min,Math.abs(right-start));
+            
+        }
+                left++;
+                right--;
+            }
+            return min;  
+          
+            }
+        
+    }
+
+
