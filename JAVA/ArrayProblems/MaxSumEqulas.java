@@ -8,6 +8,8 @@ public class MaxSumEqulas {
         int[] nums={1,2,3,4,5,6,7,8,9,10};
         int k=3;
         System.out.println(maxSumEquals(nums,k)); // Expected output: 27 (8+9+10)
+        System.out.println(subarraySum(nums,15)); // Expected output: 6 (1+2+3+4+5)
+        
     }
     /* leetcodw 325
     * You are given an integer array nums and an integer k.
@@ -17,7 +19,7 @@ public class MaxSumEqulas {
      */
     public long maximumSubarraySum(int[] nums, int k) {
         long maxSum=0;
-        long windowSum=0;// 
+        long windowSum=0;
         int n=nums.length;
         Map<Integer,Integer> map=new HashMap<>();
         // initialize the first window

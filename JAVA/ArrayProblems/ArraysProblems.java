@@ -59,7 +59,8 @@ public class ARraysProblems {
             if(nums[i]!=0){
              int temp=nums[i];
              nums[i]=nums[j];
-             nums[j++]=temp;
+             nums[j]=temp;
+                j++;// move the non-zero index forward
             }
         }
 }
